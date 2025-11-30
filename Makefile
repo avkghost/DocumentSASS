@@ -11,7 +11,7 @@ targets = $(architectures:=_instructions.txt) $(architectures:=_latencies.txt)
 all: $(targets)
 
 clean:
-	-rm -f $(targets)
+	-rm -f *.bin
 
 # Generate the SASS versions.
 %.cubin: example.cu
@@ -26,3 +26,4 @@ clean:
 
 %_instructions.txt %_latencies.txt: %_intercept.txt
 	$(PYTHON) funnel.py $<
+
