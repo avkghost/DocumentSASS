@@ -8,6 +8,8 @@ architectures=sm_50 sm_52 sm_53 sm_60 sm_61 sm_62 sm_70 sm_72 sm_75 sm_80 sm_86 
 
 targets = $(architectures:=_instructions.txt) $(architectures:=_latencies.txt)
 
+.PRECIOUS: targets
+
 all: $(targets)
 
 #clean:
@@ -26,6 +28,7 @@ all: $(targets)
 
 %_instructions.txt %_latencies.txt: %_intercept.txt
 	$(PYTHON) funnel.py $<
+
 
 
 
